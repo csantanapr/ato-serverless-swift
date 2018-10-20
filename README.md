@@ -2,7 +2,7 @@
 
 This is a simple example using Swift to build a Serverless Application that leverages IBM Watson Visual Recognition.
 
-# Pre Requisites
+# Prerequisites
 
 - Get a free account for [IBM Cloud Functions](https://console.bluemix.net), there is a free montly tier of 400GBs
 
