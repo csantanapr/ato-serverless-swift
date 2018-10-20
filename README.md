@@ -1,4 +1,4 @@
-# All Things Open 2018 - Serverless Swift Demo Code
+# All Things Open 2018 - Serverless Swift Demo Code usign Apache OpenWhisk on IBM Cloud Functions
 
 This is a simple example using Swift to build a Serverless Application that leverages IBM Watson Visual Recognition.
 
@@ -13,7 +13,7 @@ This is a simple example using Swift to build a Serverless Application that leve
 - Install [jq](https://stedolan.github.io/jq/) (brew install jq)
 
 # Deploy
-Run the `deploy,sh` script
+Run the `deploy.sh` script
 ```
 ./deploy.sh
 ```
@@ -34,12 +34,14 @@ Generate an XCode project using Swift Package Manager (spm)
 ```
 swift package generate generate-xcodeproj
 ```
-Open new xcode project
+
+## Using XCode project
+Open the new Xcode project
 ```
 open ./Action.xcodeproj
 ```
-## Using XCode project
-Open the [Sources/main.swift](actions/GetClassifier/Sources/main.swift) file this file will allow you to run the Action locally and be able to debug the function in the Action.
+
+Open the [Sources/main.swift](actions/GetClassifier/Sources/Action/main.swift) file this file will allow you to run the Action locally and be able to debug the function in the Action.
 Set the environment variable `WATSON_API_KEY_VISUAL_RECOGNITION` in XCode Product->Scheme=>Edit Scheme you can get value from the IBM Cloud Console in the Watson Recognition Service instance you created.
 
 The file `main.swift` is only to be use for debugging locally, the file `GetClassifier.swift` is the file that contains the Action code that get's deployed to the cloud.
