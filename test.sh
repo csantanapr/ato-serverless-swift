@@ -24,6 +24,7 @@ $WSK_CLI action invoke post-sms -p toNumber "$SMS_TO_NUMBER" -p message "$SMS_ME
 local URL=$(bx wsk action get post-sms --url | tail -1)
 echo "$URL?toNumber=$SMS_TO_NUMBER&message=hello"
 }
+
 test_visual_recognition
 test_post_sms
 
