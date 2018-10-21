@@ -43,7 +43,7 @@ struct ImageTags: Codable {
     struct RecognitionTags: Codable {
         struct RecognitionTag: Codable {
             let name: String
-            let score: Double
+            let score: Double?
         }
         let tags: [RecognitionTag]
         let imageUrl : String

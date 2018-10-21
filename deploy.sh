@@ -24,7 +24,7 @@ function deploy_post_sms {
 function deploy_reply_sms {
     source secrets.env
     # Deploy post sms message action
-    SOURCE_REPLY_SMS="actions/GetClassifier/Sources/Action/replySMSMessage.swift"
+    SOURCE_REPLY_SMS="actions/GetClassifier/Sources/Action/ReplySMSMessage.swift"
     $WSK_CLI action update reply-sms --main replySMSMessage  "$SOURCE_REPLY_SMS" --kind swift:4.1 --web true
     #$WSK_CLI action get reply-sms
 }
