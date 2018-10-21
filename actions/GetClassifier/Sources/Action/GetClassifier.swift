@@ -10,7 +10,7 @@ struct Output: Encodable {
     let body: RecognitionTags
 }
 
-func main(param: Input, completion: @escaping (Output?, Error?) -> Void) {
+func classifyImage(param: Input, completion: @escaping (Output?, Error?) -> Void) {
     // set up visual recogntiion sdk
     let apiKey: String = param.apiKey ?? (param.__bx_creds?.watson_vision_combined.apikey)!
     let imageUrl: String = param.imageUrl ?? defaultImage
@@ -30,6 +30,21 @@ func main(param: Input, completion: @escaping (Output?, Error?) -> Void) {
         completion(result, nil)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 struct WatsonCredentials: Decodable {
     struct Credentials: Decodable {

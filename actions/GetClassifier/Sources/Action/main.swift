@@ -30,7 +30,7 @@ let inputStr = """
 """
 let inputVisualRecognition = try fromJSON(inputStr: inputStr, type: Input.self)
 dispatchGroup.enter()
-main(param: inputVisualRecognition) { out, _ in
+classifyImage(param: inputVisualRecognition) { out, _ in
     dump(out)
     let jsonData = try? jsonEncoder.encode(out)
     let jsonString = String(data: jsonData!, encoding: .utf8)

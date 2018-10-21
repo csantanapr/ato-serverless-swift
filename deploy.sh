@@ -5,7 +5,7 @@ WSK_CLI="bx wsk"
 function deploy_visual_recognition {
     # Deploy visual recognition action
     SOURCE_CLASSIFIER="actions/GetClassifier/Sources/Action/GetClassifier.swift"
-    $WSK_CLI action update get-classifier "$SOURCE_CLASSIFIER" --kind swift:4.1 --web true
+    $WSK_CLI action update get-classifier --main classifyImage "$SOURCE_CLASSIFIER" --kind swift:4.1 --web true
     $WSK_CLI service bind watson-vision-combined get-classifier
     #$WSK_CLI action get get-classifier
 }
