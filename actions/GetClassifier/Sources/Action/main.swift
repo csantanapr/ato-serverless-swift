@@ -1,20 +1,22 @@
-import Foundation
 import Dispatch
+import Foundation
 
 let jsonDecoder = JSONDecoder()
 let jsonEncoder = JSONEncoder()
-func checkEnvVar(env: String) -> String{
+func checkEnvVar(env: String) -> String {
     if ProcessInfo.processInfo.environment[env] == nil {
         print("!!! environment variable not setup SMS_ACCOUNT_ID please add in Scheme\nProduct->Scheme=>Edit Scheme")
         exit(1)
     }
     return ProcessInfo.processInfo.environment[env]!
 }
-func fromJSON<T: Decodable>(inputStr: String,type: T.Type ) throws -> T {
+
+func fromJSON<T: Decodable>(inputStr: String, type: T.Type) throws -> T {
     let json = inputStr.data(using: .utf8, allowLossyConversion: true)!
     let decoded = try jsonDecoder.decode(type, from: json)
     return decoded
 }
+
 let dispatchGroup = DispatchGroup()
 
 /*** Visual Recognition ***/
@@ -28,14 +30,15 @@ let inputStr = """
 """
 let inputVisualRecognition = try fromJSON(inputStr: inputStr, type: Input.self)
 dispatchGroup.enter()
-main(param: inputVisualRecognition) { (out, e) in
+main(param: inputVisualRecognition) { out, _ in
     dump(out)
     let jsonData = try? jsonEncoder.encode(out)
     let jsonString = String(data: jsonData!, encoding: .utf8)
     print(jsonString!)
     dispatchGroup.leave()
 }
-let _ = dispatchGroup.wait(timeout: .distantFuture)
+
+_ = dispatchGroup.wait(timeout: .distantFuture)
 
 /*** SMS Action Debug ***/
 
@@ -54,7 +57,7 @@ let inputSMSStr = """
 """
 let inputSMS = try fromJSON(inputStr: inputSMSStr, type: SMSInput.self)
 dispatchGroup.enter()
-postSMSMessage(param: inputSMS) { (out, e) in
+postSMSMessage(param: inputSMS) { out, _ in
     dump(out)
     let jsonData = try? jsonEncoder.encode(out)
     let jsonString = String(data: jsonData!, encoding: .utf8)
@@ -62,8 +65,5 @@ postSMSMessage(param: inputSMS) { (out, e) in
     dispatchGroup.leave()
 }
 
-
-
-//small trick to wait
-let _ = dispatchGroup.wait(timeout: .distantFuture)
-
+// small trick to wait
+_ = dispatchGroup.wait(timeout: .distantFuture)
