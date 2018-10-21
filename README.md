@@ -12,6 +12,17 @@ This is a simple example using Swift to build a Serverless Application that leve
 
 - Install [jq](https://stedolan.github.io/jq/) (brew install jq)
 
+## Setup Twilio Free trial account
+- Get a trial account and request a phone number [Twilio](https://www.twilio.com)
+- Get the account id, auth token and phone number twilio gave you, and your own phone number verified to test the app
+- Create `secrets.env` using `secrets.env.template` as template
+```
+cp secrets.env.template secrets.env
+```
+- Replace the values in `secrets.env`
+
+
+
 # Deploy
 Run the `deploy.sh` script
 ```
@@ -44,7 +55,7 @@ open ./Action.xcodeproj
 Open the [Sources/main.swift](actions/GetClassifier/Sources/Action/main.swift) file this file will allow you to run the Action locally and be able to debug the function in the Action.
 Set the environment variable `WATSON_API_KEY` in XCode Product->Scheme=>Edit Scheme you can get the value from the IBM Cloud Console in the Watson Recognition Service instance you created.
 
-The file `main.swift` is only to be use for debugging locally, the file `GetClassifier.swift` is the file that contains the Action code that gets deployed to the cloud.
+The file `main.swift` is only to be use for debugging locally, the file `GetClassifier.swift` and `PostSMSMessage.swift` are the files that contain the Action code that gets deployed to the cloud.
 
 #### LICENSE
 [Apache-2.0](./LICENSE.txt)
