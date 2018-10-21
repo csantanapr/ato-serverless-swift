@@ -24,7 +24,7 @@ let WATSON_API_KEY = checkEnvVar(env: "WATSON_API_KEY")
 let IMAGE_URL = "https://farm9.staticflickr.com/8636/16418099709_d76b38ac26_z_d.jpg"
 let inputStr = """
 {
-"imageUrl":"\(IMAGE_URL)",
+"MediaUrl0":"\(IMAGE_URL)",
 "apiKey": "\(WATSON_API_KEY)"
 }
 """

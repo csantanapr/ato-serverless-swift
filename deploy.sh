@@ -21,8 +21,23 @@ function deploy_post_sms {
     #$WSK_CLI action get post-sms
 }
 
+function deploy_reply_sms {
+    source secrets.env
+    # Deploy post sms message action
+    SOURCE_REPLY_SMS="actions/GetClassifier/Sources/Action/replySMSMessage.swift"
+    $WSK_CLI action update reply-sms --main replySMSMessage  "$SOURCE_REPLY_SMS" --kind swift:4.1 --web true
+    #$WSK_CLI action get reply-sms
+}
+
+function deploy_sequence {
+   $WSK_CLI action update pet-store-webhook --sequence get-classifier,reply-sms --web true
+   $WSK_CLI action get pet-store-webhook --url
+}
+
 deploy_visual_recognition
-deploy_post_sms
+#deploy_post_sms
+deploy_reply_sms
+deploy_sequence
 
 
 

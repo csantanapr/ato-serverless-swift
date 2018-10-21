@@ -1,7 +1,7 @@
 import VisualRecognitionV3
 
 struct Input: Decodable {
-    let imageUrl: String?
+    let MediaUrl0: String?
     let apiKey: String?
     let __bx_creds: WatsonCredentials?
 }
@@ -13,7 +13,7 @@ struct Output: Encodable {
 func classifyImage(param: Input, completion: @escaping (Output?, Error?) -> Void) {
     // set up visual recogntiion sdk
     let apiKey: String = param.apiKey ?? (param.__bx_creds?.watson_vision_combined.apikey)!
-    let imageUrl: String = param.imageUrl ?? defaultImage
+    let imageUrl: String = param.MediaUrl0 ?? defaultImage
     let visualRecognition = VisualRecognition(version: "2018-10-19", apiKey: apiKey)
     let failure = { (error: Error) in print("err", error) }
 
@@ -26,7 +26,7 @@ func classifyImage(param: Input, completion: @escaping (Output?, Error?) -> Void
         for theclass in classes! {
             resultTags.append(RecognitionTag(name: theclass.className, score: theclass.score ?? 0))
         }
-        let result = Output(body: RecognitionTags(tags: resultTags))
+        let result = Output(body: RecognitionTags(tags: resultTags, imageUrl: imageUrl))
         completion(result, nil)
     }
 }
@@ -57,13 +57,14 @@ struct WatsonCredentials: Decodable {
     }
 }
 
-struct RecognitionTag: Encodable {
+struct RecognitionTag: Codable {
     let name: String
     let score: Double
 }
 
-struct RecognitionTags: Encodable {
+struct RecognitionTags: Codable {
     let tags: [RecognitionTag]
+    let imageUrl : String
 }
 
 let defaultImage = "https://farm9.staticflickr.com/8636/16418099709_d76b38ac26_z_d.jpg"
