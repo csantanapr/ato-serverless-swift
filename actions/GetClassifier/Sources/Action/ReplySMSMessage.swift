@@ -16,7 +16,7 @@ func replySMSMessage(param: ImageTags, completion: @escaping (TwimlOutput?, Erro
     let petDetected = param.body?.tags[0].name  ?? "no pet found"
     let petImage: String = param.body?.imageUrl ?? "no image"
     let petFound = lookupPet(pet: petDetected)
-    let body = getBodyMessage(body: "\(petDetected), \(petFound.name), \(petFound.description), $\(petFound.price)", media: petImage)
+    let body = getBodyMessage(body: "\(petDetected), \(petFound.description), $\(petFound.price)", media: petImage)
     let twimlM = TwimlOutput(body: body)
     completion(twimlM, nil)
 }
@@ -67,7 +67,7 @@ func lookupPet(pet:String) -> Pet {
 func buildStore() -> [Pet] {
     var petstore = [Pet]()
     petstore.append(Pet(name: "bulldog",   description: "Friendly dog from England",       price: 400.99))
-    petstore.append(Pet(name: "chihuahua", description: "Great companion do",              price: 250.49))
+    petstore.append(Pet(name: "chihuahua", description: "Great companion dog",              price: 250.49))
     petstore.append(Pet(name: "finch",     description: "Great stress reliever",           price: 7.99))
     petstore.append(Pet(name: "labrador",  description: "Great hunting dog",               price: 500.49))
     petstore.append(Pet(name: "macaw",     description: "Great companion for up to 75 years", price: 900.49))

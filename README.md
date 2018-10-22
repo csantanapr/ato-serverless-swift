@@ -14,20 +14,16 @@ This is a simple example using Swift to build a Serverless Application that leve
 
 ## Setup Twilio Free trial account
 - Get a trial account and request a phone number [Twilio](https://www.twilio.com)
-- Get the account id, auth token and phone number twilio gave you, and your own phone number verified to test the app
-- Create `secrets.env` using `secrets.env.template` as template
-```
-cp secrets.env.template secrets.env
-```
-- Replace the values in `secrets.env`
-
-
+- Request a phone number for SMS
+- Configure the phone number with a SMS webbhook
+- When you deploy the action using `deloy.sh` the Web Action URL will print
 
 # Deploy
 Run the `deploy.sh` script
 ```
 ./deploy.sh
 ```
+Use the Web Action URL and enter the value in the Twilio Console to configure the webhook for the phone number.
 
 # Test
 Invoke the deployed action using `curl` to call the Web API
@@ -56,6 +52,20 @@ Open the [Sources/main.swift](actions/GetClassifier/Sources/Action/main.swift) f
 Set the environment variable `WATSON_API_KEY` in XCode Product->Scheme=>Edit Scheme you can get the value from the IBM Cloud Console in the Watson Recognition Service instance you created.
 
 The file `main.swift` is only to be use for debugging locally, the file `GetClassifier.swift` and `PostSMSMessage.swift` are the files that contain the Action code that gets deployed to the cloud.
+
+
+
+## Bonus
+There is a swift action [PostSMSMessage.swift](actions/GetClassifier/Sources/Action/PostSMSMessage.swift) to be used as a general purpose SMS notification.
+- Get the account id, auth token and phone number twilio gave you, and your own phone number verified to test the app
+- Create `secrets.env` using `secrets.env.template` as template
+```
+cp secrets.env.template secrets.env
+```
+- Replace the values in `secrets.env`
+- Uncomment in `deploy.sh` the line `#deploy_post_sms`
+- Uncomment in `test.sh` the line `#test_post_sms`
+
 
 #### LICENSE
 [Apache-2.0](./LICENSE.txt)
