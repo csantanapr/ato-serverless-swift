@@ -17,6 +17,9 @@ func fromJSON<T: Decodable>(inputStr: String, type: T.Type) throws -> T {
     return decoded
 }
 
+//let foo = lookupPet(pet: " some macaw")
+//dump(foo)
+
 let dispatchGroup = DispatchGroup()
 
 /*** Visual Recognition ***/

@@ -46,6 +46,7 @@ func classifyImage(param: Input, completion: @escaping (Output?, Error?) -> Void
 
 
 
+
 struct WatsonCredentials: Decodable {
     struct Credentials: Decodable {
         let apikey: String
