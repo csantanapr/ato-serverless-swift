@@ -28,7 +28,7 @@ Use the Web Action URL and enter the value in the Twilio Console to configure th
 # Test
 Invoke the deployed action using `curl` to call the Web API
 ```
-./test.sh
+./run.sh
 ```
 
 # Use XCode to Develop and Debug
