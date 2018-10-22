@@ -73,7 +73,8 @@ func buildStore() -> [Pet] {
     petstore.append(Pet(name: "macaw",     description: "Great companion for up to 75 years", price: 900.49))
     petstore.append(Pet(name: "spaniel",   description: "Long, low-built bird dogs of great strength and endurance", price: 600.49))
     petstore.append(Pet(name: "terrier",   description: "Great family dog", price: 300.49))
-    petstore.append(Pet(name: "siberian",   description: "Playful, athletic, agile, and light on his feet", price: 800.49))
+    petstore.append(Pet(name: "siberian",  description: "Playful, athletic, agile, and light on his feet", price: 800.49))
+    petstore.append(Pet(name: "bernese",   description: "Watchdog and loyal companion", price: 100.99))
     return petstore
 }
 

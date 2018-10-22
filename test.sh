@@ -12,6 +12,10 @@ function test_visual_recognition {
     echo $CURL_CMD
     $CURL_CMD | jq
 }
+function test_reply_sms {
+    echo $WSK_CLI action invoke reply-sms -r
+    $WSK_CLI action invoke reply-sms -p body '{"imageUrl":"https://farm6.staticflickr.com/5254/5499587391_93be1c5973_z_d.jpg","tags":[{"name":"macaw"}]}' -r
+}
 
 function test_post_sms {
     source secrets.env
@@ -22,12 +26,9 @@ function test_post_sms {
     echo "$URL?toNumber=$SMS_TO_NUMBER&message=hello"
 }
 
-function test_reply_sms {
-    echo $WSK_CLI action invoke reply-sms -r
-    $WSK_CLI action invoke reply-sms -p body '{"imageUrl":"https://farm6.staticflickr.com/5254/5499587391_93be1c5973_z_d.jpg","tags":[{"name":"macaw"}]}' -r
-}
 
-#test_visual_recognition
+
+test_visual_recognition
 #test_post_sms
 test_reply_sms
 
