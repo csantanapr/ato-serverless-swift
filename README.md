@@ -93,3 +93,6 @@ cp secrets.env.template secrets.env
 
 #### LICENSE
 [Apache-2.0](./LICENSE.txt)
+
+Demo:
+![](docs/images/demo.gif)
