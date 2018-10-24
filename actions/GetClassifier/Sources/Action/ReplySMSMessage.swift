@@ -82,7 +82,8 @@ struct Pet {
 func lookupPet(pet:String) -> Pet {
     let petStore = buildStore()
     let petlower = pet.lowercased()
-    var thePet = Pet(name: "pet", description: "not in stock", price: 0.00, imageUrl: "https://csantanapr.github.io/ato-serverless-swift/images/out-off-stock.jpg")
+    let outOfStock = "https://csantanapr.github.io/ato-serverless-swift/images/out-off-stock.jpg"
+    var thePet = Pet(name: "pet", description: "not in stock", price: 0.00, imageUrl: outOfStock)
     for e in petStore {
         if petlower.contains(e.name) {
             thePet = e

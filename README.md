@@ -1,4 +1,4 @@
-# All Things Open 2018 - Serverless Swift Demo Code usign Apache OpenWhisk on IBM Cloud Functions
+# All Things Open 2018 Conf. - Serverless Swift Demo
 
 This is a simple example using Swift to build a Serverless Application that leverages IBM Watson Visual Recognition.
 
@@ -11,6 +11,23 @@ This is a simple example using Swift to build a Serverless Application that leve
 - Setup a new [Watson Recognition Service](https://console.bluemix.net/catalog/services/visual-recognition) from the Catalog
 
 - Install [jq](https://stedolan.github.io/jq/) (brew install jq)
+
+## Test the CLI with a hello world
+Test the CLI with hello world swift example
+```
+bx wsk action update hello hello.swift --kind swift:4.1 --web true
+bx wsk action invoke hello -r -p name Carlos
+```
+```json
+{
+    "body": "Hello Carlos!"
+}
+```
+Get the Web Action URL
+```
+bx wsk action get --url
+```
+Open a browser using the output URL
 
 ## Setup Twilio Free trial account
 - Get a trial account and request a phone number [Twilio](https://www.twilio.com)

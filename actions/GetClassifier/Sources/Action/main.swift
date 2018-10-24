@@ -24,7 +24,7 @@ let dispatchGroup = DispatchGroup()
 
 /*** Visual Recognition ***/
 let WATSON_API_KEY = checkEnvVar(env: "WATSON_API_KEY")
-let IMAGE_URL = "https://farm9.staticflickr.com/8636/16418099709_d76b38ac26_z_d.jpg"
+let IMAGE_URL = "https://csantanapr.github.io/ato-serverless-swift/images/labrador.jpg"
 let inputStr = """
 {
 "MediaUrl0":"\(IMAGE_URL)",
