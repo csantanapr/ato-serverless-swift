@@ -2,6 +2,12 @@
 
 This is a simple example using Swift to build a Serverless Application that leverages IBM Watson Visual Recognition.
 
+[Slides here](AllThingsOpen2018-Serverless-Swift.pdf)
+
+The application receives a pictures using Twilio SMS service, it does visual recognition on the image to detect the type of pet, then searches the demo Pet Store to find a matching pet, and replies back with a SMS response with a description and price.
+![architecture diagram](docs/images/architecture.jpg "Architecture Diagram")
+
+
 # Prerequisites
 
 - Get a free account for [IBM Cloud Functions](https://console.bluemix.net), there is a free montly tier of 400GBs
@@ -13,7 +19,7 @@ This is a simple example using Swift to build a Serverless Application that leve
 - Install [jq](https://stedolan.github.io/jq/) (brew install jq)
 
 ## Test the CLI with a hello world
-Test the CLI with hello world swift example
+Test the CLI setup with hello world swift example
 ```
 bx wsk action update hello hello.swift --kind swift:4.1 --web true
 bx wsk action invoke hello -r -p name Carlos
@@ -32,8 +38,9 @@ Open a browser using the output URL
 ## Setup Twilio Free trial account
 - Get a trial account and request a phone number [Twilio](https://www.twilio.com)
 - Request a phone number for SMS
-- Configure the phone number with a SMS webbhook
+- Configure the phone number with a SMS
 - When you deploy the action using `deloy.sh` the Web Action URL will print
+- Setup a WebHook for the phone number using the URL from the previous step
 
 # Deploy
 Run the `deploy.sh` script
@@ -73,7 +80,7 @@ The file `main.swift` is only to be use for debugging locally, the file `GetClas
 
 
 ## Bonus
-There is a swift action [PostSMSMessage.swift](actions/GetClassifier/Sources/Action/PostSMSMessage.swift) to be used as a general purpose SMS notification.
+There is a swift action [PostSMSMessage.swift](actions/GetClassifier/Sources/Action/PostSMSMessage.swift) to be used as a general purpose SMS notification. This Action can be use in case you want to reply right away to the SMS, and then async do the processing for the pet and eventually get back to the user by posting a SMS at a later time.
 - Get the account id, auth token and phone number twilio gave you, and your own phone number verified to test the app
 - Create `secrets.env` using `secrets.env.template` as template
 ```
