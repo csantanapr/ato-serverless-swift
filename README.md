@@ -2,7 +2,7 @@
 
 This is a simple example using Swift to build a Serverless Application that leverages IBM Watson Visual Recognition.
 
-[Slides here](AllThingsOpen2018-Serverless-Swift.pdf)
+[Slides here](https://csantanapr.github.io/ato-serverless-swift/AllThingsOpen2018-Serverless-Swift.pdf)
 
 The application receives a pictures using Twilio SMS service, it does visual recognition on the image to detect the type of pet, then searches the demo Pet Store to find a matching pet, and replies back with a SMS response with a description and price.
 ![architecture diagram](docs/images/architecture.jpg "Architecture Diagram")
